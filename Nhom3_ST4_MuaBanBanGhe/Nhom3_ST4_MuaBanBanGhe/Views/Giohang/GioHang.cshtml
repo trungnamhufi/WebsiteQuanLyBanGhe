@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<Giohang>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th><label class="font-weight-bold">Tên</label></th>
+        <th><label class="font-weight-bold">Hình</label></th>
+        <th><label class="font-weight-bold">Đơn Giá</label></th>
+        <th><label class="font-weight-bold">Số Lượng</label></th>
+        <th><label class="font-weight-bold">Thành Tiền</label></th>
+        <th><label class="font-weight-bold"></label></th>
+        <th><label class="font-weight-bold"></label></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><a href="@Url.Action("hienthiChiTiet", "Home", new { ma = @item.iMasanpham })">@item.sTensanpham</a></td>
+            <td><img src="~/Content/Hinh/@item.sAnhbia" /></td>
+            <td><label>@item.dDongia</label></td>
+            <td><label>@item.iSoluong</label></td>
+            <td><label>@item.dThanhtien</label></td>
+            <td><a href="@Url.Action("XoaGiohang", "Giohang", new { iMaSp = @item.iMasanpham})">Xóa</a></td>
+        </tr>
+    }
+    <tr>
+        <td>
+            <label class="font-weght-bold">Tổng số lượng:</label>
+        </td>
+        <td>
+            <label></label>
+        </td>
+        <td>
+            <label class="font-weght-bold">Thành Tiền:</label>
+        </td>
+        <td>
+                <label>@Html.Action("TongTien","Giohang")</label>
+        </td>
+    </tr>
+</table>

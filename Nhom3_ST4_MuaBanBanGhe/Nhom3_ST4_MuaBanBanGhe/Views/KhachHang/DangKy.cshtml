@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Đăng Ký Khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2 class="text-center text-primary">ĐĂNG KÝ KHÁCH HÀNG</h2>
+    <form action="@Url.Action("XLDangKy")" method ="post">
+        <div class="container">
+        <table style="height : 30px">
+            <tr >
+                <td>Tên Khách Hàng</td>
+                <td><input type="text" class="form-control" name="txtTen"/></td>
+            </tr>
+             <tr >
+                <td>Giới Tính</td>
+                <td> 
+                    <input  type="radio" name="GioiTinh" value="Nam"/>Nam
+                    <input  type="radio" name="GioiTinh" value="Nữ"/>Nữ
+                </td>
+            </tr>
+            <tr>
+                <td>Tên Đăng nhập</td>
+                <td><input type="text" class="form-control" name="txtDangNhap"/><label class="text-danger">@ViewBag.ThongBao1</label></td>
+            </tr>
+            <tr>
+                <td>Mật Khẩu</td>
+                <td><input type="password" class="form-control"  name="txtMatKhau"/></td>
+            </tr>
+            <tr>
+                <td>Mật Khẩu nhập lại</td>
+                <td><input type="password" class="form-control" name="txtReMatKhau"/><label class="text-danger">@ViewBag.ThongBao2</label></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" class="form-control" name="txtEmail"/></td>
+            </tr>
+             <tr>
+                <td>Địa Chỉ</td>
+                <td><input type="text" class="form-control" name="txtDiaChi"/></td>
+            </tr>
+            <tr>
+                <td>Điện Thoại</td>
+                <td><input type="number" class="form-control" name="txtDienThoai"/></td>
+            </tr>
+            <tr>
+                <td>Ngày Sinh</td>
+                <td><input type="date" name="txtNgaySinh"/></td>
+            </tr>
+            <tr>
+                <td><a href="@Url.Action("DangNhap")">Đăng Nhập</a></td>
+                <td><input type ="submit" value ="Đăng ký"></td>
+            </tr>
+        </table>  
+         </div>
+    </form>

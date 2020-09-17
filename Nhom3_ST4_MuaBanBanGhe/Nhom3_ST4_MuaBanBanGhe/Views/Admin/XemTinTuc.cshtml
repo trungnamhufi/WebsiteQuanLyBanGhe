@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "XemTinTuc";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<TinTuc>
+<br />
+<br />
+<br />
+<h2 class="text-center text-primary"> Quản Lý Tin Tức </h2>
+@*<a href="@Url.Action("ThemTinTuc","Admin")">Thêm Tin Tức</a>*@
+@foreach (var item in Model)
+{
+      <div class="row" style="/*height:300px*/">
+       <div class="col-4">
+           <img style="width:300px; height:200px " src="~/Content/Hinh/@item.HinhAnh" /> 
+       </div>
+       <div class="col-6">
+           <h4 class="font-weight-bold">@item.TieuDe</h4>
+           <p>@item.Ngay</p>
+           <br />
+           <p>@item.NoiDung</p>
+       </div>
+       <div class="col-2">
+           <a href="@Url.Action("XoaTinTuc", "Admin", new { ma = item.MaTin })">Xóa</a>
+       </div>
+   </div>
+}
+
+
+
+
+

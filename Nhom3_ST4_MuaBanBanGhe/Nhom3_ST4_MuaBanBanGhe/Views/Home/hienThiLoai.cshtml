@@ -1,0 +1,11 @@
+﻿@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<Loai>
+
+<ul class="nav flex-column">
+        @foreach (Loai item in Model)
+        { 
+            <li class="nav-item h-25 mw-100"style="background-color:#f17d2b; border-bottom:thick">
+                <a class="nav-link" style="color:black;" href="@Url.Action("hienthiSanPham", new { ma = @item.idLoai })">  @item.TenLoai</a>
+            </li>       
+        }
+</ul>

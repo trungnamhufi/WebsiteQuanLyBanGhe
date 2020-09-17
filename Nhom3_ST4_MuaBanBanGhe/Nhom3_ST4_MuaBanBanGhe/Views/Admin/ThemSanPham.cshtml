@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "ThemSanPham";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model Nhom3_ST4_MuaBanBanGhe.Models.Loai
+
+<form action="@Url.Action("XLThemSP", "Admin", new { ma = Model.idLoai })" method ="post" enctype ="multipart/form-data">
+<div class="container-fluid justify-center">
+
+        <div class="container">
+            <div class="form-group">
+                <label>Tên Sản Phẩm</label>
+                <input type="text" class="form-control " name="txtTenSP"/>
+            </div>
+                 <div class="form-group">
+                <label>Giá Sản Phẩm</label>
+                <input type="text" class="form-control " name="txtGiaSP"/>
+            </div>
+            <div class="form-group">
+                <label>Số Lượng</label>
+                <input type="text" class="form-control" name="txtSoLuong"/>
+            </div>
+                <div class="form-group">
+                <label>Mô tả</label>
+                 <textarea id="TextArea1" cols="20" rows="2" name="txtMota" class="form-control w-100 h-100"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Khuyến Mãi</label>
+                <input type="text" class="form-control " name="txtKhuyenMai"/>
+            </div>
+            <div class="form-group">
+                <label>Hinh </label>
+                <input id="file" type="file" class="form-control" name="file"/>
+                @ViewBag.ThongBao
+            </div>
+               <div class="form-group">
+                  <input type="submit" class="btnSubmit" value="Thêm Sản Phẩm" />              
+            </div>
+        </div>
+
+</div>
+</form>
+

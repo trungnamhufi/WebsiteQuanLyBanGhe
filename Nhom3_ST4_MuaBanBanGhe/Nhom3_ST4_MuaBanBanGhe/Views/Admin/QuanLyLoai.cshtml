@@ -1,0 +1,60 @@
+﻿@using Nhom3_ST4_MuaBanBanGhe.Models;
+<link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+@model List<Loai>
+<link href="~/Content/css/shop-homepage.css" rel="stylesheet" />
+
+<table class="table table-dark table-bordered table-hover">
+    <tr>
+        <th>Tên Loại</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="w-25">@item.TenLoai</td>
+            <td class="w-25"><a href="@Url.Action("QuanLySanPham", "Admin", new { ma = @item.idLoai})">Các Sản Phẩm</a></td>
+            <td class="w-25"><a href="@Url.Action("XoaLoai", "Admin", new { ma = @item.idLoai})">Xóa</a></td>
+            <td class="w-25"><a href="@Url.Action("ThemSanPham", "Admin", new { ma= @item.@idLoai})">Thêm Sản Phẩm</a></td>
+        </tr>
+    }
+  
+</table>
+
+<div id="id01" class="modal" style="margin:auto;">
+<form action="#" method="post" class="model-content animate">
+         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <div class="container">
+            <div class="form-group">
+                <label>Tên Sản Phẩm</label>
+                <input type="text" class="font-control w-40" name="txtTenSP"/>
+            </div>
+                 <div class="form-group">
+                <label>Giá Sản Phẩm</label>
+                <input type="text" class="font-control w-40" name="txtGiaSP"/>
+            </div>
+            <div class="form-group">
+                <label>Số Lượng</label>
+                <input type="text" class="font-control w-40" name="txtSoLuong"/>
+            </div>
+                <div class="form-group">
+                <label>Mô tả</label>
+                <input type="text" class="font-control w-40" name="txtMoTa"/>
+            </div>
+            <div class="form-group">
+                <label>Khuyến Mãi</label>
+                <input type="text" class="font-control w-40" name="txtKhuyenMai"/>
+            </div>
+            <div class="form-group">
+                <label>Hinh </label>
+                <input id="File1" type="file" class="font-control" name="txtHinh"/>
+            </div>
+               <div class="form-group">
+                  <input type="submit" class="btnSubmit" value="Login" />              
+            </div>
+        </div>
+</form>
+</div>
+

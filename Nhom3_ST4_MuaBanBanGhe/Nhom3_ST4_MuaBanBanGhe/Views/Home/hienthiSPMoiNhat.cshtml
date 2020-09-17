@@ -1,0 +1,125 @@
+﻿@using Nhom3_ST4_MuaBanBanGhe.Models;
+
+@model SanPham[]
+
+<br />
+
+<div  style="border-bottom:solid ;border-top:solid ; border-color:blue;">
+    <br />
+    <h2 class="text-center text-primary">Sản phẩm mới nhất</h2>
+<div class="row">
+  @for (int i = 0; i < 6; i++)
+  {
+ 
+        <div class="col-md-2">
+            <div class="card" style="width:400px">
+              <div>            
+                 <img class="card-img-top" style="width:200px;height:200px" src="~/Content/Hinh/@Model[i].Hinh"  alt="Card image">
+              </div>
+          <div class="card-body ">
+                
+            <h4 class="card-title" style="width:200px ; height:100px">@Model[i].Name</h4>
+            
+            @if (Model[i].KhuyenMai != null)
+            {
+               <p>Giá: <small class="text-danger">@(float.Parse(Model[i].Gia.ToString()) - (float.Parse(Model[i].Gia.ToString()) * @Model[i].KhuyenMai)) VNĐ</small></p>
+          
+            }
+            else
+            {
+               <p>Giá: <small class="text-danger">@float.Parse(Model[i].Gia.ToString()) VNĐ</small></p>
+            }
+            
+            <a href="@Url.Action("Themgiohang","Giohang", new { ma = @Model[i].idSanPham})">Đặt hàng</a>
+             <a href="@Url.Action("hienthiChiTiet", "Home", new { ma = @Model[i].idSanPham })">Chi Tiết</a>
+          </div>
+        </div>
+        </div>
+    
+  }
+</div>
+<br />
+</div>
+
+<br />
+
+<div  style="border-bottom:solid ;border-top:solid ; border-color:blue;">
+    <br />
+    <h2 class="text-center text-primary">Sản phẩm đang có khuyến mãi</h2>
+<div class="row">
+
+       @{
+            int dem = 0;
+        for (int i = 0; i < Model.Length; i++)
+	    {
+	        if(@Model[i].KhuyenMai != null && dem <= 6)
+            {
+              <div class="col-md-2">
+            <div class="card" style="width:400px">
+              <div>            
+                 <img class="card-img-top" style="width:200px;height:200px" src="~/Content/Hinh/@Model[i].Hinh"  alt="Card image">
+              </div>
+          <div class="card-body ">
+                
+            <h4 class="card-title" style="width:200px ; height:100px">@Model[i].Name</h4>
+               <p>Giá: <small class="text-danger">@(float.Parse(Model[i].Gia.ToString()) - (float.Parse(Model[i].Gia.ToString()) * @Model[i].KhuyenMai)) VNĐ</small></p>
+
+            <a href="@Url.Action("Themgiohang","Giohang", new { ma = @Model[i].idSanPham})">Đặt hàng</a>
+             <a href="@Url.Action("hienthiChiTiet", "Home", new { ma = @Model[i].idSanPham })">Chi Tiết</a>
+          </div>
+        </div>
+        </div>
+                dem++;
+            }
+	    }
+    }
+</div>
+<br />
+</div>
+
+<br />
+
+<div  style="border-bottom:solid ;border-top:solid ; border-color:blue;">
+    <br />
+    <h2 class="text-center text-primary">Sản phẩm Phổ Biến</h2>
+<div class="row">
+
+       @{
+            int dem2 = 0;
+            SanPham[] sp= Model.OrderByDescending(t => t.SoLuotXem).ToArray();
+        for (int i = 0; i < sp.Length; i++)
+	    {
+	        if(dem2 < 6)
+            {
+             <div class="col-md-2">
+            <div class="card" style="width:400px">
+              <div>            
+                 <img class="card-img-top" style="width:200px;height:200px" src="~/Content/Hinh/@sp[i].Hinh"  alt="Card image">
+              </div>
+          <div class="card-body ">
+                
+            <h4 class="card-title" style="width:200px ; height:100px">@sp[i].Name</h4>
+            
+            @if (sp[i].KhuyenMai != null)
+            {
+               <p>Giá: <small class="text-danger">@(float.Parse(sp[i].Gia.ToString()) - (float.Parse(sp[i].Gia.ToString()) * @sp[i].KhuyenMai)) VNĐ</small></p>
+          
+            }
+            else
+            {
+               <p>Giá: <small class="text-danger">@float.Parse(sp[i].Gia.ToString()) VNĐ</small></p>
+            }
+            
+            <a href="@Url.Action("Themgiohang","Giohang", new { ma = @sp[i].idSanPham})">Đặt hàng</a>
+             <a href="@Url.Action("hienthiChiTiet", "Home", new { ma = @sp[i].idSanPham })">Chi Tiết</a>
+          </div>
+        </div>
+        </div>
+                dem2++;
+            }
+	    }
+    }
+</div>
+<br />
+</div>
+

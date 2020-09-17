@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Đăng Nhập</h2>
+
+<div class="container login-container">
+    <form action="@Url.Action("XLDangNhap")" method ="post">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 login-form-1">                   
+                    
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email *" value="" name="txtTK" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" value="" name="txtMK" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="btnForgetPwd">Forget Password?</a>
+                        </div>
+                    
+                </div>
+            </div>
+        </form>
+</div>

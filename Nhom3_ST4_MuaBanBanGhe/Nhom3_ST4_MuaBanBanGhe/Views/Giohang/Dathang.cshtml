@@ -1,0 +1,91 @@
+﻿@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<Giohang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="gio_hang">
+    <h2>THÔNG TIN GIỎ HÀNG</h2>
+    <table align="center" border="1">
+        <tr>
+            <td>Mã sản phẩm</td>
+            <td>Tên sản phẩm</td>
+            <td>Ảnh bìa</td>
+            <td>Số lượng</td>
+            <td>Đơn giá</td>
+            <td>Thành tiền</td>
+            <td width="50px"></td>
+            <td width="50px"></td>
+            <td width="50px"></td>
+            <td width="50px"></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.iMasanpham</td>
+                <td>@item.sTensanpham</td>
+                <td><img src="~/Images/hinh_san_pham/@item.sAnhbia" /></td>
+                <td>@item.iSoluong</td>
+                <td>@String.Format("{0:0,0}", item.dDongia)</td>
+                <td>@String.Format("{0:0,0}", item.dThanhtien)</td>
+                @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaSP = item.iMasanpham }))
+                {
+                    <td>
+                        @item.iSoluong
+                    </td>
+                    <td>@string.Format("{0:0,0}", item.dDongia)</td>
+                    <td>@string.Format("{0:0,0}", item.dThanhtien)</td>
+                    <td><a href="@Url.Action("Details","Home", new { id = item.iMasanpham })">Chi tiết</a></td>
+                }
+            </tr>
+        }
+
+        <tr class="tong_tien">
+            <td colspan="7">Số lượng sản phẩm: @ViewBag.Tongsoluong</td>
+            <td colspan="5">Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VND</td>
+        </tr>
+    </table>
+</div>
+<div class="thong_tin_dat_hang">
+    <h2 class="text-center">THÔNG TIN ĐẶT HÀNG</h2>
+    @{ 
+        TaiKhoan kh = (TaiKhoan)Session["Taikhoan"];
+    }
+    <table align="center">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <tr>
+                <td>Họ tên khách hàng</td>
+                <td>@kh.name</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td> @kh.Diachi</td>
+            </tr>
+            <tr>
+                <td>Điện thoại</td>
+                <td> @kh.Phone </td>
+            </tr>
+            <tr>
+                <td>Ngày đặt</td>
+                <td> @DateTime.Now.ToShortDateString() </td>
+            </tr>
+            <tr>
+                <td>Ngày giao hàng</td>
+                <td>
+                    <input type="date" name="Ngaygiao" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="Submit" value="Đồng ý đặt hàng" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

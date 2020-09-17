@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "ThongTinKhachHang";
+    Layout = "~/Views/Shared/HLayout.cshtml";
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+}
+@model Nhom3_ST4_MuaBanBanGhe.Models.TaiKhoan
+<br />
+<br />
+<br />
+<br />
+<h2 class="text-center text-primary"> Thông Tin Khách Hàng </h2>
+<table class="table table-dark table-hober">
+    <tr>
+        <td><label class="font-weight-bold">Tên:</label></td>
+        <td><label>@Model.name</label></td>
+    </tr>
+   <tr>
+        <td><label class="font-weight-bold">Ngày Sinh</label></td>
+        <td><label>@Model.NgaySinh</label></td>
+    </tr>    
+   <tr>
+        <td><label class="font-weight-bold">Địa Chỉ</label></td>
+        <td><label>@Model.Diachi</label></td>
+    </tr>
+    
+      <tr>
+        <td><label class="font-weight-bold">Email</label></td>
+        <td><label>@Model.Email</label></td>
+    </tr>
+
+</table>
+
+<h2 class="text-center text-primary"> Hóa Đơn </h2>
+<div class="container-fluid">
+    @Html.Action("hienthiHoaDon", "GioHang", new {ma = @Model.idTaiKhoan});
+</div>

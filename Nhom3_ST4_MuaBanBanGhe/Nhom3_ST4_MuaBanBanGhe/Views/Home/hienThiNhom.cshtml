@@ -1,0 +1,13 @@
+﻿@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<NhomSP>
+
+<ul class="nav flex-column">
+       @foreach (var item in Model)
+       {
+           <li class="nav-item h-50 mw-100" style="background-color:#f18050 ">   
+            <p class="font-weight-bold text-center" style="color:black;font:bold">@item.tenNhom</p>
+           </li>
+           @Html.Action("hienthiLoai", new { ma = @item.idNhom})
+       }
+
+</ul>

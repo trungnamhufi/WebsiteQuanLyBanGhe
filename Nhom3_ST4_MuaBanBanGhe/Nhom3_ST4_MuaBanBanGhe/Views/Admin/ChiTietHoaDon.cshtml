@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "ChiTietHoaDon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<ChiTietHD>
+<br />
+<br />
+<br>
+<h2 class="text-center text-primary"> Chi Tiết hóa đơn</h2>
+<table class="table table-hover">
+    <tr>
+        <th>ID Hóa Đơn</th>
+        <th>ID Chi Tiết</th>
+        <th>ID San Phẩm</th>
+        <th>Số Lượng</th>
+        <th>Thành Tiền</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.idHoaDon</td>
+            <td>@item.idChiTiet</td>
+            <td>@item.idSanPham</td>
+            <td>@item.Soluong</td>
+            <td>@item.ThanhTien</td>
+        </tr>
+    }
+    
+</table>

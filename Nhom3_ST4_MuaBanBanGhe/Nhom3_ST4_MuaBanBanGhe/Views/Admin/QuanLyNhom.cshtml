@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "QuanLyNhom";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<NhomSP>
+<br />
+<br />
+<br />
+<h2 class="text-center text-primary">Quản lý Nhóm</h2>
+
+<h3 class="text-center text-primary">Thêm Nhóm</h3>
+<form action="@Url.Action("XLThemNhom","Admin")" method="post" class="form-inline">
+    <table class="table">
+        <tr>
+            <td>Tên Nhóm</td>
+            <td><input type="text" class="form-control" placeholder="*Tên Nhóm" name="txtTen"/>
+                <button class="btn btn-success my-3 my-sm-0" type="submit" > Thêm Nhóm</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+
+@foreach (var item in Model)
+{
+    <div class="container-fluid">
+        <h3 class="text-center text-danger">@item.tenNhom</h3><a href="@Url.Action("XoaNhom", new {ma = item.idNhom })">Xóa</a>
+        @Html.Action("QuanLyLoai", new { ma = @item.idNhom })
+            <form class="form-inline" action="@Url.Action("XLThemLoai","Admin", new {ma = @item.idNhom})" method="post">
+                <input type="text" class="form-control w-20" placeholder="*Thêm Loại" name="txtTenLoai"/>
+                <button class="btn btn-success my-3 my-sm-0" type="submit" > Thêm Loại</button>
+            </form>
+        </div>
+}

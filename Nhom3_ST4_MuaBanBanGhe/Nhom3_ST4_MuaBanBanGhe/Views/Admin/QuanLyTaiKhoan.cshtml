@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "QuanLyTaiKhoan";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<TaiKhoan>
+<h2 class="text-center text-primary">Quản Lý Tài Khoản</h2>
+<table class="table table-hover">
+    <tr>
+        <th>Id Tài Khoản</th>
+        <th>Tên Tài Khoản</th>
+        <th>Tài Khoản</th>
+        <th>Mật Khẩu</th>
+        <th>Ngày Sinh</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.idTaiKhoan</td>
+            <td>@item.userName</td>
+            <td>@item.name</td>
+            <td>@item.pass</td>
+            <td>@item.NgaySinh</td>
+            <td><a href="@Url.Action("ThongTinKhachHang", "KhachHang", new {ma = @item.idTaiKhoan })">Chi Tiết</a></td>
+        </tr>
+    }
+    
+</table>
+

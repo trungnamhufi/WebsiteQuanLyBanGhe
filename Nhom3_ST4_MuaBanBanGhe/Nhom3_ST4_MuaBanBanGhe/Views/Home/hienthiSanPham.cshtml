@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Sản Phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<SanPham>
+
+<div class="row">
+@foreach (var item in Model)
+{
+         <div class="col-md-4">
+            <div class="card" >
+              <div>            
+                 <img class="card-img-top" style="width:200px;height:200px" src="~/Content/Hinh/@item.Hinh"  alt="Card image">
+              </div>
+          <div class="card-body ">
+                
+            <h4 class="card-title" style="width:200px ; height:100px">@item.Name</h4>
+            
+            @if (@item.KhuyenMai != null)
+            {
+               <p>Giá: <small class="text-danger">@(float.Parse(@item.Gia.ToString()) - (float.Parse(@item.Gia.ToString()) * @item.KhuyenMai)) VNĐ</small></p>
+          
+            }
+            else
+            {
+               <p>Giá: <p class="text-danger">@float.Parse(@item.Gia.ToString()) VNĐ</p></p>
+            }
+            
+            <a href="@Url.Action("Themgiohang", "Giohang", new { ma = @item.idSanPham})">Đặt hàng</a>
+            <a href="@Url.Action("hienthiChiTiet", "Home", new { ma = @item.idSanPham })">Chi Tiết</a>
+          </div>
+        </div>
+        </div>
+}
+</div>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "QuanLy";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<h2 class="text-center text-primary">Trang Quản Lý</h2>
+<table class="table table-primary table-bordered">
+    <tr>
+        <td class="text-center"><a class="nav-link" href="@Url.Action("QuanLyTaiKhoan","Admin")">Quản Lý Tài Khoản</a></td>
+        <td class="text-center"><a class="nav-link" href="@Url.Action("QuanLyHoaDon","Admin")">Quản Lý Hóa Đơn</a></td>
+    </tr>
+    <tr>
+         <td class="text-center"><a class="nav-link" href="@Url.Action("QuanLyNhom","Admin")">Quản lý Sản Phẩm</a></td> 
+         <td class="text-center"><a class="nav-link" href="@Url.Action("XemTinTuc","Admin")">Quản Lý Tin Tức</a></td>
+    </tr>
+</table>
+

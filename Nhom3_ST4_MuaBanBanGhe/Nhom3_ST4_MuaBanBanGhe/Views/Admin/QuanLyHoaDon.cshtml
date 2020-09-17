@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "QuanLyHoaDon";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using Nhom3_ST4_MuaBanBanGhe.Models;
+@model List<HoaDon>
+<br />
+<br />
+<br />
+<h2>Quản Lý Hóa Đơn</h2>
+<table class="table table-hover">
+    <tr>
+        <th>ID Hóa Đơn</th>
+        <th>IDTaiKhoan</th>
+        <th>Tổng Tiền</th>
+        <th>Ngày Lập</th>
+        <th>Ngày Giao</th>
+        <th>Địa Chỉ Giao</th>
+        <th>Tình Trạng</th>
+        <th>Thành Tiền</th>
+        <th>Chi Tiết</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.idTaiKhoan</td>
+            <td>@item.idTaiKhoan</td>
+            <td>@item.TongTien</td>
+            <td>@item.NgayLap</td>
+            <td>@item.NgayGiao</td>
+            <td>@item.DiaChiGiao</td>
+            <td>@item.TinhTrang</td>
+            <td>@item.ThanhTien</td>
+            <td><a href="@Url.Action("ChiTietHoaDon", new { ma = @item.idHoaDon})">Chi Tiết</a></td>
+        </tr>
+    }
+    
+</table>

@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "XoaSanPham";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
+@model Nhom3_ST4_MuaBanBanGhe.Models.SanPham
+
+<div class="row">
+    <div class="col-6">
+        <img src="~/Content/Hinh/@Model.Hinh" class="img w-100"/>
+    </div>
+    <div class="col-6">
+        <table class="table table-striped">
+            <tr>
+                <td><label class="font-weight-bold">Tên: </label></td>
+                <td><label>@Model.Name </label></td>
+            </tr>
+            <tr>
+                <td><label class="font-weight-bold">Giá: </label></td>
+                       @if (@Model.KhuyenMai != null)
+                    {
+                       <td><label>@(float.Parse(@Model.Gia.ToString()) - (float.Parse(@Model.Gia.ToString()) * @Model.KhuyenMai)) VNĐ</label></td>
+          
+                    }
+                    else
+                    {
+                        <td><p>@float.Parse(@Model.Gia.ToString()) VNĐ</p></td>
+                    }
+            </tr>
+            <tr>
+                <td><label class="text-font">Mô Tả: </label></td>
+                <td><p>@Model.MoTa </p></td>
+            </tr>
+            <tr>
+                <td></td>
+               <a href="@Url.Action("XLXoaSP", "Admin", new { masp = @Model.idSanPham})">Xóa</a>
+            </tr>
+        </table>
+    </div>
+</div>

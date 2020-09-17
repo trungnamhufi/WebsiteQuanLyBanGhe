@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "hienthiChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Nhom3_ST4_MuaBanBanGhe.Models.SanPham
+
+<div class="row">
+    <div class="col-6">
+        <img src="~/Content/Hinh/@Model.Hinh" class="img w-100"/>
+    </div>
+    <div class="col-6">
+        <table class="table table-striped">
+            <tr>
+                <td><label class="font-weight-bold">Tên: </label></td>
+                <td><label>@Model.Name </label></td>
+            </tr>
+            <tr>
+                <td><label class="font-weight-bold">Giá: </label></td>
+                       @if (@Model.KhuyenMai != null)
+                    {
+                       <td><label>@(float.Parse(@Model.Gia.ToString()) - (float.Parse(@Model.Gia.ToString()) * @Model.KhuyenMai)) VNĐ</label></td>
+          
+                    }
+                    else
+                    {
+                        <td><p>@float.Parse(@Model.Gia.ToString()) VNĐ</p></td>
+                    }
+            </tr>
+            <tr>
+                <td><label class="text-font">Mô Tả: </label></td>
+                <td><p>@Model.MoTa </p></td>
+
+            </tr>
+            <tr>
+               <td>
+                <a href="@Url.Action("Themgiohang", "Giohang", new { ma = @Model.idSanPham})">Đặt hàng</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

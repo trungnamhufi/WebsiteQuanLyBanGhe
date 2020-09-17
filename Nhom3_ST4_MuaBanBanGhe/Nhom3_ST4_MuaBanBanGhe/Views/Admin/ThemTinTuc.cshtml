@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "ThemTinTuc";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2 class="text-center text-primary"> Thêm Tin Tức</h2>
+<form action="@Url.Action("XLThemTT","Admin")" method ="post" enctype ="multipart/form-data">
+<div class="container-fluid justify-center">
+
+        <div class="container">
+            <div class="form-group">
+                <label>Tên Tiêu Đề</label>
+                <input type="text" class="form-control " name="txtTieuDe"/>
+            </div>
+            <div class="form-group">
+                <label>Mô tả</label>
+                 <textarea id="TextArea1" cols="20" rows="2" name="txtMota" class="form-control w-100 h-100"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Hinh </label>
+                <input id="file" type="file" class="form-control" name="file"/>
+                @ViewBag.ThongBao
+            </div>
+               <div class="form-group">
+                  <input type="submit" class="btnSubmit" value="Thêm Tin Tức" />              
+            </div>
+        </div>
+
+</div>
+</form>
